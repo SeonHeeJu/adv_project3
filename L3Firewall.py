@@ -197,7 +197,7 @@ class Firewall (EventMixin):
 				self.pairs[str(smac)] = str(ip_packet.srcip)   #add the souuce Mac and source IP pair to pairs dictionary
 			else:
 				if (self.pairs[str(smac)] != str(ip_packet.srcip)):  #if  MAC address has spoofed multiple IP addresses
-					self.disbaled_MAC_pair.append(Ethaddr(smac),EthAddr(dmac))
+					self.disbaled_MAC_pair.append(EthAddr(smac),EthAddr(dmac))
 					self._handle_ConnectionUp(event)
 					self.installFlow(event, 0, smac, dmac, ip_packet.srcip, ip_packet.dstip, None, None, ip_packet.protocol)
             
